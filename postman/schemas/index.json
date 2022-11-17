@@ -1,0 +1,17 @@
+{
+    "info":{
+        "title": "get recommend frame",
+        "description": "aaaa"
+    },
+    "paths":{
+        "/getFrame":{
+            "get":{
+                "personalized": "if use personalization logic, then 1",
+                "contentsId": "もしキーとなるコンテンツIがあるなら設定",
+                "duration": "情報鮮度(期限を決められるなら)",
+                "maxFrameSize": "縦列の最大値",
+                "recommendLogic": "指定したいレコメンドロジックがあれば"
+            }
+        }
+    }
+}

@@ -1,0 +1,52 @@
+openapi: 3.0.0
+info:
+  title: Recommend Frame API 
+  description: マルチレコメンド情報取得API
+  version: 0.0.0
+servers:
+  - url: https://example.com/api/v0
+    description: プロダクション API
+  - url: http://{host}:{port}/api/v0
+    description: 開発用
+    variables:
+      host:
+        default: localhost
+      port:
+        default: '10080'
+paths:
+  /getFrame:
+    get:
+      operationId: recommendframe.controller.getframe.call
+      summary: レコメンドフレームを返します。
+      description: レコメンドフレーム(縦列)を返します
+      parameters:
+        - name: key-contents_id
+          in: query
+          description: レコメンドキーコンテンツID
+          schema:
+            $ref: '#/components/schemas/key-contents_id'
+      responses:
+        '200':
+          description: サーバーは正常に動作しています
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_health_response'
+components:
+  schemas:
+    get_health_response:
+      description: サーバーの状態のレスポンス
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+            - ok
+      required:
+        - status
+    keycontents_id:
+      description: ぱーそ
+      type: string
+      pattern: '[a-zA-Z0-9_-]+'
+      maxLength: 127
+      example: product_ABC-awe9gfisd
